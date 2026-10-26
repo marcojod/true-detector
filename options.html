@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>True Detector settings</title>
+<style>
+:root{--ink:#14202B;--mute:#5B6B7B;--line:#D5DDE6;--brand:#2B3A67}
+body{margin:0;background:#EEF2F6;color:var(--ink);font:14px/1.5 "Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+main{max-width:560px;margin:32px auto;padding:0 16px}
+h1{font-size:22px;margin:0 0 4px}p.sub{color:var(--mute);margin:0 0 20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:14px}
+label{display:block;font-weight:600;margin:10px 0 4px}label:first-child{margin-top:0}
+input[type=password],input[type=text],input[type=number],select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font:inherit}
+.chk{display:flex;gap:8px;align-items:center;font-weight:400;margin:6px 0}
+.hint{color:var(--mute);font-size:12px;margin:4px 0 0}
+button{padding:8px 14px;border-radius:6px;border:1px solid var(--brand);background:var(--brand);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+button.ghost{background:transparent;color:var(--brand)}
+#msg{margin-left:10px;color:var(--mute)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+</style></head><body><main>
+<h1>Project True Detector</h1><p class="sub">Connect Gemma 4 and choose what gets checked.</p>
+<div class="card">
+  <label for="key">Gemini API key</label>
+  <input id="key" type="password" autocomplete="off" spellcheck="false">
+  <p class="hint">Create a key in Google AI Studio. It is stored only in this browser profile.</p>
+  <label for="model">Gemma 4 model</label>
+  <input id="model" type="text" list="models">
+  <datalist id="models"><option value="gemma-4-31b-it"><option value="gemma-4-26b-a4b-it"></datalist>
+  <label for="max">Images checked per page</label>
+  <input id="max" type="number" min="0" max="200">
+  <p class="hint">Every photo-sized image is checked up to this limit, largest and visible ones first. Lower it if you hit the free-tier rate limit.</p>
+  <label for="showScan">Scan animation</label>
+  <select id="showScan"><option value="load">Show on every page load and manual scan</option><option value="manual">Show only when I press “Scan this page now”</option><option value="never">Never show (scan silently)</option></select>
+</div>
+<div class="card">
+  <label class="chk"><input type="checkbox" id="enabled"> Enable True Detector</label>
+  <label class="chk"><input type="checkbox" data-f="image"> Image check</label>
+  <label class="chk"><input type="checkbox" data-f="scam"> Scam messages and notifications</label>
+  <label class="chk"><input type="checkbox" data-f="threat"> Page threats</label>
+  <label class="chk"><input type="checkbox" data-f="routing"> Redirect routes</label>
+  <label class="chk"><input type="checkbox" data-f="traffic"> Traffic watch</label>
+</div>
+<p class="hint">Privacy: text, image thumbnails and request summaries from pages you visit are sent to Google's Gemini API for analysis. Turn off a check to stop sending that data.</p>
+<button id="save" type="button">Save</button><button id="test" type="button" class="ghost">Test connection</button><span id="msg" role="status"></span>
+</main><script src="options.js"></script></body></html>

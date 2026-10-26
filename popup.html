@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>True Detector</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header>
+  <div class="brand"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" fill="#2B3A67"/><path d="m8.5 12.2 2.4 2.4 4.7-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>True Detector</b></div>
+  <label class="switch" title="Turn all checks on or off"><input id="master" type="checkbox" aria-label="Enable True Detector"><span></span></label>
+</header>
+<section id="verdict" class="verdict unknown"><div id="status" class="status">Loading…</div><div id="host" class="host"></div></section>
+<div id="keybar" class="keybar" hidden>Add your Gemini API key to turn on Gemma analysis. <button id="keybtn" type="button">Open settings</button></div>
+<section id="features" class="features"></section>
+<h2>Findings on this page</h2>
+<div id="findings" class="findings"></div>
+<footer><button id="scan" type="button">Scan this page now</button><button id="opts" type="button" class="ghost">Settings</button></footer>
+<script src="popup.js"></script>
+</body></html>

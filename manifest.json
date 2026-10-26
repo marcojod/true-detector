@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Project True Detector",
+  "version": "0.2.0",
+  "description": "Full-page scanning with live animation: AI images, scams, phishing, risky links, redirects and traffic, powered by Gemma 4.",
+  "minimum_chrome_version": "111",
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webNavigation",
+    "tabs",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "True Detector"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "page-hook.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "rules.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}
